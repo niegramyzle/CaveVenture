@@ -17,7 +17,7 @@ public class MovementInputController : MonoBehaviour
     [SerializeField]
     private bool isJumping;
     [SerializeField]
-    private float jumpMultiplier;
+    private float jumpSpeed;
 
     private float sidewayInputVal;
     private float forwardInputVal;
@@ -30,10 +30,12 @@ public class MovementInputController : MonoBehaviour
         forwardInputVal = Input.GetAxis(vertiInputName) * movementSpeed;
         if (Input.GetKey(jumpKey))
         {
-            verticlaInputVal = jumpMultiplier;
+            verticlaInputVal = jumpSpeed;
+            isJumping = true;
         }
-        playerMovement.playerMovement(sidewayInputVal, forwardInputVal, verticlaInputVal);
-        verticlaInputVal = 0;
+        playerMovement.playerMovement(sidewayInputVal, forwardInputVal, verticlaInputVal, isJumping);
+        verticlaInputVal = 0.0f;
+        isJumping = false;
     }
 }
 

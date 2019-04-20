@@ -13,6 +13,27 @@ public class PlayerRotation : MonoBehaviour
     private Quaternion quaternionToRotate;
     private float directionRotationVal = 0;
 
+    private float resetDownDownLimiter;
+    private float resetDownUpLimiter;
+    private float resetUpDownLimiter;
+    private float resetUpUpLimiter;
+    private float clampDownDownLimiter;
+    private float clampDownUpLimiter;
+    private float clampUpDownLimiter;
+    private float clampUpUpLimiter;
+
+    private void Awake()
+    {
+        clampUpDownLimiter = 270.0f;
+        clampUpUpLimiter = 355.0f;
+        resetUpDownLimiter = 270.0f;
+        resetUpUpLimiter = 280.0f;
+        clampDownDownLimiter = 5.0f;
+        clampDownUpLimiter = 90.0f;
+        resetDownDownLimiter = 80.0f;
+        resetDownUpLimiter = 90.0f;
+    }
+
     public void rotatePlayer(float horizonRotationVal, float vertiRotationVal)
     {
         if (vertiRotationVal < 0)
@@ -46,11 +67,12 @@ public class PlayerRotation : MonoBehaviour
         Quaternion quater = Quaternion.Slerp(playerFullTransform.rotation, quaternionToRotate, horizonRotationVal * (-1));
         playerFullTransform.rotation = quater;
     }
+
     private void rotateUp(float vertiRotationVal)
     {
         quaternionToRotate = Quaternion.FromToRotation(playerHeadTransform.transform.forward, playerHeadTransform.up) * playerHeadTransform.rotation;
-        quaternionToRotate.eulerAngles = new Vector3(Mathf.Clamp(quaternionToRotate.eulerAngles.x, 270.0f, 355.0f), quaternionToRotate.eulerAngles.y, quaternionToRotate.eulerAngles.z);
-        if (quaternionToRotate.eulerAngles.x < 350.0f && quaternionToRotate.eulerAngles.x >= 270.0f)
+        quaternionToRotate.eulerAngles = new Vector3(Mathf.Clamp(quaternionToRotate.eulerAngles.x, clampUpDownLimiter, clampUpUpLimiter), quaternionToRotate.eulerAngles.y, quaternionToRotate.eulerAngles.z);
+        if (quaternionToRotate.eulerAngles.x < clampUpUpLimiter-5 && quaternionToRotate.eulerAngles.x >= clampUpDownLimiter)
         {
             Quaternion quater = Quaternion.Slerp(playerHeadTransform.rotation, quaternionToRotate, vertiRotationVal);
             playerHeadTransform.rotation = quater;
@@ -61,15 +83,15 @@ public class PlayerRotation : MonoBehaviour
             Quaternion quater = Quaternion.Slerp(playerHeadTransform.rotation, quaternionToRotate, vertiRotationVal);
             playerHeadTransform.rotation = quater;
         }
-        if (quaternionToRotate.eulerAngles.x < 280.0f && quaternionToRotate.eulerAngles.x > 270.0f)// taki reset na środku aby się zakres nie przesuwał
+        if (quaternionToRotate.eulerAngles.x < resetUpUpLimiter && quaternionToRotate.eulerAngles.x > resetUpDownLimiter)// taki reset na środku aby się zakres nie przesuwał
             directionRotationVal = 0;
     }
 
     private void rotateDown(float vertiRotationVal)
     {
         quaternionToRotate = Quaternion.FromToRotation(playerHeadTransform.transform.forward, -playerHeadTransform.up) * playerHeadTransform.rotation;
-        quaternionToRotate.eulerAngles = new Vector3(Mathf.Clamp(quaternionToRotate.eulerAngles.x, 5.0f, 90.0f), quaternionToRotate.eulerAngles.y, quaternionToRotate.eulerAngles.z);
-        if (quaternionToRotate.eulerAngles.x > 10.0f && quaternionToRotate.eulerAngles.x < 270.0f)
+        quaternionToRotate.eulerAngles = new Vector3(Mathf.Clamp(quaternionToRotate.eulerAngles.x, clampDownDownLimiter, clampDownUpLimiter), quaternionToRotate.eulerAngles.y, quaternionToRotate.eulerAngles.z);
+        if (quaternionToRotate.eulerAngles.x > clampDownDownLimiter + 5 && quaternionToRotate.eulerAngles.x < clampDownUpLimiter)
         {
             Quaternion quater = Quaternion.Slerp(playerHeadTransform.rotation, quaternionToRotate, vertiRotationVal * (-1));
             playerHeadTransform.rotation = quater;
@@ -80,77 +102,11 @@ public class PlayerRotation : MonoBehaviour
             Quaternion quater = Quaternion.Slerp(playerHeadTransform.rotation, quaternionToRotate, vertiRotationVal * (-1));
             playerHeadTransform.rotation = quater;
         }
-        if (quaternionToRotate.eulerAngles.x > 80.0f && quaternionToRotate.eulerAngles.x < 90.0f)// taki reset na środku aby się zakres nie przesuwał
+        if (quaternionToRotate.eulerAngles.x > resetDownDownLimiter && quaternionToRotate.eulerAngles.x < resetDownUpLimiter)// taki reset na środku aby się zakres nie przesuwał
             directionRotationVal = 0;
 
     }
 }
 
 
-/*public class PlayerRotation : MonoBehaviour
-{
-    [SerializeField]
-    private Transform playerHeadTransform;
-    [SerializeField]
-    private Transform playerFullTransform;
 
-    private float xAxisClamp;
-    private Quaternion quaternionToRotate;
-
-    private void Awake()
-    {
-        xAxisClamp = 0;
-    }
-
-    public void rotatePlayer(float horizonRotationVal, float vertiRotationVal)
-    {
-        xAxisClamp += vertiRotationVal;
-        if(vertiRotationVal<0 && xAxisClamp>-1.0f)
-        {
-            rotateDown(vertiRotationVal);
-        }
-        else if(vertiRotationVal > 0 && xAxisClamp<1.0f)
-        {
-            rotateUp(vertiRotationVal);
-        }
-
-        if(xAxisClamp<-1.0f)
-        {
-            xAxisClamp = -1.0f;
-        }
-        else if(xAxisClamp > 1.0f)
-        {
-            xAxisClamp = 1.0f;
-        }
-
-        if (horizonRotationVal < 0)
-        {
-            rotateLeft(horizonRotationVal);
-        }
-        else if (horizonRotationVal > 0)
-        {
-            rotateRight(horizonRotationVal);
-        }
-    }
-
-    private void rotateRight(float horizonRotationVal)
-    {
-        quaternionToRotate = Quaternion.FromToRotation(playerFullTransform.transform.forward, playerFullTransform.right) * playerFullTransform.rotation;
-        playerFullTransform.rotation = Quaternion.Slerp(playerFullTransform.rotation, quaternionToRotate, horizonRotationVal);
-    }
-    private void rotateLeft(float horizonRotationVal)
-    {
-        quaternionToRotate = Quaternion.FromToRotation(playerFullTransform.transform.forward, -playerFullTransform.right) * playerFullTransform.rotation;
-        playerFullTransform.rotation = Quaternion.Slerp(playerFullTransform.rotation, quaternionToRotate, horizonRotationVal * (-1));
-    }
-    private void rotateUp(float vertiRotationVal)
-    {
-        quaternionToRotate = Quaternion.FromToRotation(playerHeadTransform.transform.forward, playerHeadTransform.up) * playerHeadTransform.rotation;
-        playerHeadTransform.rotation = Quaternion.Slerp(playerHeadTransform.rotation, quaternionToRotate, vertiRotationVal);
-    }
-    private void rotateDown(float vertiRotationVal)
-    {
-        quaternionToRotate = Quaternion.FromToRotation(playerHeadTransform.transform.forward, -playerHeadTransform.up) * playerHeadTransform.rotation;
-        playerHeadTransform.rotation = Quaternion.Slerp(playerHeadTransform.rotation, quaternionToRotate, vertiRotationVal*(-1));
-    }
-}*/

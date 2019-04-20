@@ -5,81 +5,52 @@ using UnityEngine;
 public class MovementInputController : MonoBehaviour
 {
     [SerializeField]
-    private string horizonInputName;
+    private string horizonInputName;//sideway
     [SerializeField]
-    private string vertiInputName;
-    [SerializeField]
-    private PlayerMovement playerMovement;
-    [SerializeField]
-    private float movementSpeed;
+    private string vertiInputName;//forward
     [SerializeField]
     private KeyCode jumpKey;
     [SerializeField]
-    private bool isJumping;
+    private PlayerMovement playerMovement;
     [SerializeField]
-    private float jumpSpeed;
+    float superSpeedTimeLimit;
 
-    private float sidewayInputVal;
-    private float forwardInputVal;
-    private float verticlaInputVal;
+
+    float firstTimeClickKey;
+    bool doubleClickW;
+    bool isAcceleration;
+    private bool isJumping;
+
+    private void doubleSpeed()
+    {
+        if(Input.GetKeyDown("w"))
+        {
+            if(Time.time-firstTimeClickKey<superSpeedTimeLimit && doubleClickW)
+            {
+                isAcceleration = true;
+                doubleClickW = false;
+            }
+            else
+            {
+                firstTimeClickKey = Time.time;
+                doubleClickW = true;
+            }
+        }
+        else if(Input.GetKeyUp("w"))
+        {
+            isAcceleration = false;
+        }
+    }
 
     // Update is called once per frame
     void Update()
     {
-        sidewayInputVal = Input.GetAxis(horizonInputName) * movementSpeed;
-        forwardInputVal = Input.GetAxis(vertiInputName) * movementSpeed;
         if (Input.GetKey(jumpKey))
         {
-            verticlaInputVal = jumpSpeed;
             isJumping = true;
         }
-        playerMovement.playerMovement(sidewayInputVal, forwardInputVal, verticlaInputVal, isJumping);
-        verticlaInputVal = 0.0f;
+        doubleSpeed();
+        playerMovement.playerMovement(Input.GetAxis(horizonInputName), Input.GetAxis(vertiInputName), isJumping, isAcceleration);
         isJumping = false;
     }
 }
-
-/*public class MovementInputController : MonoBehaviour
-{
-    [SerializeField]
-    private string horizonInputName;
-    [SerializeField]
-    private string vertiInputName;
-    [SerializeField]
-    private PlayerMovement playerMovement;
-    [SerializeField]
-    private float movementSpeed;
-    [SerializeField]
-    private KeyCode jumpKey;
-    [SerializeField]
-    private bool isJumping;
-    [SerializeField]
-    private AnimationCurve jumpFallOff;
-    [SerializeField]
-    private float jumpMultiplier;
-
-    private float horizInput;
-    private float vertiInput;
-
-    private void jumpInput()
-    {
-        if(Input.GetKeyDown(jumpKey) && !isJumping)
-        {
-            isJumping = true;
-            StartCoroutine(playerMovement.jumpEvent(jumpMultiplier, jumpFallOff));
-        }
-    }
-
-    public void setJumping(bool jump)
-    {
-        isJumping = jump;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        horizInput = Input.GetAxis(horizonInputName) * movementSpeed;
-        vertiInput = Input.GetAxis(vertiInputName) * movementSpeed;
-        playerMovement.playerMovement(horizInput, vertiInput);
-        jumpInput();
-    }
-}*/

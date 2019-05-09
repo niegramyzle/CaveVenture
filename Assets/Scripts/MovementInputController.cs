@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class MovementInputController : MonoBehaviour
 {
@@ -11,10 +12,12 @@ public class MovementInputController : MonoBehaviour
     [SerializeField]
     private KeyCode jumpKey;
     [SerializeField]
-    private PlayerMovement playerMovement;
+    private CharacterMovement playerMovement;
     [SerializeField]
     float superSpeedTimeLimit;
 
+    public Action speedZoomingOn;
+    public Action speedZoomingOff;
 
     float firstTimeClickKey;
     bool doubleClickW;
@@ -40,6 +43,11 @@ public class MovementInputController : MonoBehaviour
         {
             isAcceleration = false;
         }
+
+        if (isAcceleration)
+            speedZoomingOn();
+        else
+            speedZoomingOff();
     }
 
     // Update is called once per frame
@@ -50,7 +58,7 @@ public class MovementInputController : MonoBehaviour
             isJumping = true;
         }
         doubleSpeed();
-        playerMovement.playerMovement(Input.GetAxis(horizonInputName), Input.GetAxis(vertiInputName), isJumping, isAcceleration);
+        playerMovement.movement(Input.GetAxis(horizonInputName), Input.GetAxis(vertiInputName), isJumping, isAcceleration);
         isJumping = false;
     }
 }

@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class CharacterMovement : MonoBehaviour
 {
 
     private CharacterController charController;
-    [SerializeField]
-    private MovementInputController movementInputController;// to do usuniecia
     [SerializeField]
     private float airDrag;
     [SerializeField]
@@ -70,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
 
         airMove.x=sidewayInputVal * airMoveMultiplier;
         airMove.z=forwardInputVal * airMoveMultiplier;
-        Debug.Log(moveDirection.y);
+       // Debug.Log(moveDirection.y);
         moveDirection.x *= airDrag * Time.deltaTime; 
         moveDirection.z *= airDrag * Time.deltaTime;
         airMove = transform.TransformDirection(airMove);
@@ -78,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
         charController.Move((moveDirection + airMove)*Time.deltaTime);
     }
 
-    public void playerMovement(float sidewayInputVal, float forwardInputVal, bool isJumping, bool isAcceleration)
+    public void movement(float sidewayInputVal, float forwardInputVal, bool isJumping, bool isAcceleration)
     {
         sidewayInputVal *= movementSpeed;
         if(isAcceleration)

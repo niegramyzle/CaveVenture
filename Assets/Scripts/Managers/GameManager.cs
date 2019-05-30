@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    [SerializeField]
-    List<EnemyController> enemies;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +13,6 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach(var enemy in enemies)
-        {
-            enemy.UpdateMe();
-        }
+        
     }
 }

@@ -2,14 +2,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public abstract class Weapon : MonoBehaviour
 {
-    [SerializeField]
-    private int damage;
+    [SerializeField] protected int damage;
+    [SerializeField] protected float cooldown;
+    [SerializeField] protected float previousHitTime;
+    protected bool onHit;
 
-    public int Damage
+    public abstract void hit();
+
+    private void OnTriggerStay(Collider other)
     {
-        get;
-        set;
+        if (onHit && transform.parent.gameObject!=other.gameObject)
+        {
+            Debug.Log("hit");
+            CombatController target = other.gameObject.GetComponent<CombatController>();
+            if (target != null)
+            {
+                Debug.Log(other.gameObject.name);
+                target.takeDamage(damage);
+                onHit = false;
+            }
+            else
+                Debug.Log("je null");
+        }
     }
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (onHit && !other.transform.parent)
+    //    {
+    //        Debug.Log("hit");
+    //        CombatController target = other.gameObject.GetComponent<CombatController>();
+    //       // Debug.Log(other.gameObject.name);
+    //        if (target != null)
+    //        {
+    //           // Debug.Log("kolizja z cc");
+    //            target.takeDamage(damage);
+    //            onHit = false;
+    //        }
+    //    //Debug.Log("kolizja bez");
+    //    }
+    //    //Debug.Log("nope");
+    //}
 }

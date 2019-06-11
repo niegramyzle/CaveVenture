@@ -8,12 +8,12 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected float cooldown;
     [SerializeField] protected float previousHitTime;
     protected bool onHit;
-
+    [SerializeField] private GameObject parent;
     public abstract void hit();
 
     private void OnTriggerStay(Collider other)
     {
-        if (onHit && transform.parent.gameObject!=other.gameObject)
+        if (onHit && parent!=other.gameObject)
         {
             Debug.Log("hit");
             CombatController target = other.gameObject.GetComponent<CombatController>();
@@ -27,22 +27,4 @@ public abstract class Weapon : MonoBehaviour
                 Debug.Log("je null");
         }
     }
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (onHit && !other.transform.parent)
-    //    {
-    //        Debug.Log("hit");
-    //        CombatController target = other.gameObject.GetComponent<CombatController>();
-    //       // Debug.Log(other.gameObject.name);
-    //        if (target != null)
-    //        {
-    //           // Debug.Log("kolizja z cc");
-    //            target.takeDamage(damage);
-    //            onHit = false;
-    //        }
-    //    //Debug.Log("kolizja bez");
-    //    }
-    //    //Debug.Log("nope");
-    //}
 }

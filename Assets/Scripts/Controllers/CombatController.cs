@@ -18,17 +18,19 @@ public class CombatController : MonoBehaviour
 
 
     Weapon weapon;
+    CharacterStats stats;
+    private void Awake()
+    {
+        stats = GetComponent<CharacterStats>();
+    }
 
-
-
-    public bool IsDied { get; set; }
 
     public void takeDamage(int dmg)
     {
         Debug.Log(health);
         health -= dmg;
         if (health == 0)
-            IsDied = true;
+            stats.IsDied = true;
     }
 
     public void Attack()

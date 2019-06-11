@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.AI;
+﻿using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
@@ -14,6 +11,12 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private CharacterMovement charMov;
     private Transform target;
+    private CharacterStats stats; 
+
+    public bool IsDied()
+    {
+        return stats.IsDied;
+    }
 
     [SerializeField]
     Weapon weapon;
@@ -24,6 +27,7 @@ public class EnemyController : MonoBehaviour
     {
         target = PlayerManager.instance.Player.transform;
         combatCont = GetComponent<CombatController>();
+        stats = GetComponent<CharacterStats>();
     }
 
     private void wander()

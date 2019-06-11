@@ -10,7 +10,7 @@ public class InteractionInputController : MonoBehaviour
     public bool OnClickInteraction()
     {
         Debug.Log("Press " + interactionKeyName);
-        return Input.GetKey(interactionKeyName);
+        return Input.GetKeyDown(interactionKeyName);
     }
 
 }

@@ -1,33 +1,60 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField]
-    private float lookRadius;
-    [SerializeField]
-    private float combatRadius;
-    [SerializeField]
-    private float rotationSpeed;
-    [SerializeField]
+    [SerializeField] private float lookRadius;
+    [SerializeField] private float combatRadius;
+    [SerializeField] private float rotationSpeed;
     private CharacterMovement charMov;
     private Transform target;
-    private CharacterStats stats; 
-
-    public bool IsDied()
-    {
-        return stats.IsDied;
-    }
+    private CharacterStats stats;
+    private Animator anim;
+    private bool diedFlag, deathAnimFlag;
 
     [SerializeField]
     Weapon weapon;
 
     private CombatController combatCont;
 
+    public bool IsDied()
+    {
+        if (!stats.IsDied)
+        {
+            return false;
+        }
+        else if (!diedFlag)
+        {
+            diedFlag = true;
+            anim.SetTrigger("Active");
+            StartCoroutine(death());
+            return true;
+        }
+        return true;
+    }
+
+    private IEnumerator death()
+    {
+        do
+        {
+            yield return null;
+        } while (!deathAnimFlag);
+            anim.SetTrigger("Active");
+            gameObject.SetActive(false);
+    }
+
+    private void endAnim()
+    {
+        deathAnimFlag = true;
+    }
+
     private void Start()
     {
         target = PlayerManager.instance.Player.transform;
         combatCont = GetComponent<CombatController>();
         stats = GetComponent<CharacterStats>();
+        anim = GetComponent<Animator>();
+        charMov = GetComponent<CharacterMovement>(); 
     }
 
     private void wander()

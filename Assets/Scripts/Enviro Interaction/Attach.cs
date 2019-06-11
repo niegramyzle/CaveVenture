@@ -6,6 +6,8 @@ public class Attach : MonoBehaviour
 {
     [SerializeField]
     private GameObject character;
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == character)

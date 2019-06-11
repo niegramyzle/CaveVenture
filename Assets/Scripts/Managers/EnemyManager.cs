@@ -21,18 +21,10 @@ public class EnemyManager : MonoBehaviour
     {
         foreach (var enemy in enemies)
         {
-            if (enemy.gameObject.activeSelf)
+            if (enemy.gameObject.activeSelf && !enemy.IsDied())
             {
-                if (enemy.IsDied())
-                {
-                    enemy.gameObject.SetActive(false);
-                }
-                else
-                {
-                    enemy.UpdateEnemy();
-                }
+            enemy.UpdateEnemy();
             }
-
         }
     }
 }

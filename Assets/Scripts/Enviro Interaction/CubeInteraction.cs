@@ -10,7 +10,10 @@ public class CubeInteraction : MonoBehaviour
     {
         if(other.gameObject==target)
         {
-            gameObject.SetActive(false);
+            var anim = gameObject.GetComponent<Animator>();
+            anim.Rebind();
+            anim.enabled = false;
+            transform.parent.gameObject.SetActive(false);
         }
     }
 }

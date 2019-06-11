@@ -29,7 +29,7 @@ public class CombatController : MonoBehaviour
     {
         Debug.Log(health);
         health -= dmg;
-        if (health == 0)
+        if (health <= 0)
             stats.IsDied = true;
     }
 

@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     private void gameOver()
     {
-
+        //SceneManager.LoadScene("SampleScene");
     }
 
     // Update is called once per frame

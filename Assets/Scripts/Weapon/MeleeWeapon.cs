@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class MeleeWeapon : Weapon
 {
-    [SerializeField] private Animation animat;
-    [SerializeField] private AnimationClip clip;
+    private Animator anim;
+
+    private void Awake()
+    {
+        anim =transform.parent.GetComponent<Animator>();
+    }
 
     public override void hit()
     {
-        if(Time.time-previousHitTime>=cooldown)
+        if(Time.time-previousHitTime>=cooldown) //zmienić
         {
             onHit = true;
-            //Debug.Log("XDD");
+            Debug.Log("XDD");
             previousHitTime = Time.time;
-            //delay/animacja uderzenia
-            animat.Play(clip.name);
+            anim.SetTrigger("toActive");
             StartCoroutine(makeHit());
             //Debug.Log(" NOT XDD");
         }
@@ -24,11 +27,11 @@ public class MeleeWeapon : Weapon
 
     private IEnumerator makeHit()
     {
-        Debug.Log("kaj ta animacja");
         do
         {
             yield return null;
-        } while (animat.isPlaying);
+        } while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime>=1);//animat.isPlaying
+        anim.SetTrigger("toActive");
         onHit = false;
     }
 }

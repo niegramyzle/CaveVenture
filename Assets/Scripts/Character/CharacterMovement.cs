@@ -6,28 +6,20 @@ public class CharacterMovement : MonoBehaviour
 {
 
     private CharacterController charController;
-    [SerializeField]
-    private float airDrag;
-    [SerializeField]
-    private float jumpSpeed;
-    [SerializeField]
-    private float movementSpeed;
-    [SerializeField]
-    private float acceleration;
-
-    [SerializeField]
-    private float gravityMultiplier;
-    [SerializeField]
-    private float airMoveMultiplier;
-
+    [SerializeField] private float airDrag;
+    [SerializeField] private float jumpSpeed;
+    [SerializeField] private float movementSpeed;
+    [SerializeField] private float acceleration;
+    [SerializeField] private float gravityMultiplier;
+    [SerializeField] private float airMoveMultiplier;
+    [SerializeField] private float slopeForce;
+    [SerializeField] private float slopeForceRayLenght;
     private Vector3 moveDirection;
     private Vector3 airMove;
     private bool isJump;
 
-    [SerializeField]
-    private float slopeForce;
-    [SerializeField]
-    private float slopeForceRayLenght;
+    public Vector3 Offset { get; set; }
+    public bool OnPlatform { get; set; }
 
     void Awake()
     {
@@ -39,10 +31,21 @@ public class CharacterMovement : MonoBehaviour
 
     private void flatMovement(float sidewayInputVal, float forwardInputVal)
     {
-        moveDirection.x = sidewayInputVal;
-        moveDirection.z = forwardInputVal;
-        moveDirection = transform.TransformDirection(moveDirection);
-        charController.Move(moveDirection * Time.deltaTime);
+        if (!OnPlatform)
+        {
+            moveDirection.x = sidewayInputVal;
+            moveDirection.z = forwardInputVal;
+            moveDirection = transform.TransformDirection(moveDirection);
+            charController.Move(moveDirection * Time.deltaTime);
+        }
+        else if(sidewayInputVal !=0 || forwardInputVal!=0)
+        {
+            moveDirection.x = sidewayInputVal;
+            moveDirection.z = forwardInputVal;
+            moveDirection = transform.TransformDirection(moveDirection);
+            //charController.Move(moveDirection * Time.deltaTime);
+            charController.Move((moveDirection) * Time.deltaTime + Offset);
+        }
     }
       
     private void slopeMovement(float sidewayInputVal, float forwardInputVal)
@@ -68,7 +71,6 @@ public class CharacterMovement : MonoBehaviour
 
         airMove.x=sidewayInputVal * airMoveMultiplier;
         airMove.z=forwardInputVal * airMoveMultiplier;
-       // Debug.Log(moveDirection.y);
         moveDirection.x *= airDrag * Time.deltaTime; 
         moveDirection.z *= airDrag * Time.deltaTime;
         airMove = transform.TransformDirection(airMove);
@@ -79,7 +81,7 @@ public class CharacterMovement : MonoBehaviour
     public void movement(float sidewayInputVal, float forwardInputVal, bool isJumping, bool isAcceleration)
     {
         sidewayInputVal *= movementSpeed;
-        if(isAcceleration)
+        if (isAcceleration)
             forwardInputVal *= movementSpeed*acceleration;
         else
             forwardInputVal *= movementSpeed;

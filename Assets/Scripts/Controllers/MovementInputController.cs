@@ -5,16 +5,12 @@ using System;
 
 public class MovementInputController : MonoBehaviour
 {
-    [SerializeField]
-    private string horizonInputName;//sideway
-    [SerializeField]
-    private string vertiInputName;//forward
-    [SerializeField]
-    private KeyCode jumpKey;
-    [SerializeField]
-    private CharacterMovement playerMovement;
-    [SerializeField]
-    float superSpeedTimeLimit;
+    [SerializeField] private string horizonInputName;//sideway
+    [SerializeField] private string vertiInputName;//forward
+    [SerializeField] private KeyCode jumpKey;
+    [SerializeField] private CharacterMovement playerMovement;
+    [SerializeField] float superSpeedTimeLimit;
+
 
     public Action speedZoomingOn;
     public Action speedZoomingOff;

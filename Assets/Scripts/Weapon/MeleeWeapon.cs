@@ -8,19 +8,21 @@ public class MeleeWeapon : Weapon
 
     private void Awake()
     {
-        anim =transform.parent.GetComponent<Animator>();
+        anim =transform.GetComponent<Animator>();
     }
 
     public override void hit()
     {
-        if(Time.time-previousHitTime>=cooldown) //zmienić
+        if(!hitTimeFlag) //Time.time-previousHitTime>=cooldown
         {
+            hitTimeFlag = true;
             onHit = true;
-            Debug.Log("XDD");
+
             previousHitTime = Time.time;
-            anim.SetTrigger("toActive");
+            Debug.Log("trr");
+            anim.SetBool("attack", true);
+            endAnimFlag = false;
             StartCoroutine(makeHit());
-            //Debug.Log(" NOT XDD");
         }
         //throw new System.NotImplementedException();
     }
@@ -29,9 +31,12 @@ public class MeleeWeapon : Weapon
     {
         do
         {
+            Debug.Log("korr");
             yield return null;
-        } while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime>=1);//animat.isPlaying
-        anim.SetTrigger("toActive");
+        } while (!endAnimFlag);//anim.GetCurrentAnimatorStateInfo(0).normalizedTime>=1
+        anim.SetBool("attack", false);
+        Debug.Log("fal");
         onHit = false;
+        hitTimeFlag = false;
     }
 }

@@ -8,17 +8,21 @@ public class MovementInputController : MonoBehaviour
     [SerializeField] private string horizonInputName;//sideway
     [SerializeField] private string vertiInputName;//forward
     [SerializeField] private KeyCode jumpKey;
-    [SerializeField] private CharacterMovement playerMovement;
     [SerializeField] float superSpeedTimeLimit;
-
+    private CharacterMovement playerMovement;
 
     public Action speedZoomingOn;
     public Action speedZoomingOff;
 
-    float firstTimeClickKey;
-    bool doubleClickW;
-    bool isAcceleration;
+    private float firstTimeClickKey;
+    private bool doubleClickW;
+    private bool isAcceleration;
     private bool isJumping;
+
+    private void Awake()
+    {
+        playerMovement = GetComponent<CharacterMovement>();
+    }
 
     private void doubleSpeed()
     {

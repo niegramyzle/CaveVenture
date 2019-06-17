@@ -5,7 +5,6 @@ public class EnemyController : MonoBehaviour
 {
     [SerializeField] private float lookRadius;
     [SerializeField] private float combatRadius;
-    [SerializeField] private float rotationSpeed;
     private CharacterMovement charMov;
     private Transform target;
     private CharacterStats stats;
@@ -65,7 +64,7 @@ public class EnemyController : MonoBehaviour
     private void follow()
     {
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation
-            (target.position - transform.position), rotationSpeed * Time.deltaTime);
+            (target.position - transform.position), stats.RotationSpeed * Time.deltaTime);
         charMov.movement(0, 1, false, false);
     }
 

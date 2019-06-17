@@ -6,12 +6,8 @@ public class CharacterMovement : MonoBehaviour
 {
 
     private CharacterController charController;
+    private CharacterStats stats;
     [SerializeField] private float airDrag;
-    [SerializeField] private float jumpSpeed;
-    [SerializeField] private float movementSpeed;
-    [SerializeField] private float acceleration;
-    [SerializeField] private float gravityMultiplier;
-    [SerializeField] private float airMoveMultiplier;
     [SerializeField] private float slopeForce;
     [SerializeField] private float slopeForceRayLenght;
     private Vector3 moveDirection;
@@ -26,6 +22,7 @@ public class CharacterMovement : MonoBehaviour
         moveDirection=new Vector3(0.0f, 0.0f, 0.0f);
         airMove = new Vector3(0.0f, 0.0f, 0.0f);
         charController = GetComponent<CharacterController>();
+        stats = GetComponent<CharacterStats>();
     }
 
 
@@ -66,11 +63,11 @@ public class CharacterMovement : MonoBehaviour
         }
         else
         {
-            moveDirection.y += Physics.gravity.y * gravityMultiplier * Time.deltaTime;
+            moveDirection.y += Physics.gravity.y * stats.GravityMultiplier * Time.deltaTime;
         }
 
-        airMove.x=sidewayInputVal * airMoveMultiplier;
-        airMove.z=forwardInputVal * airMoveMultiplier;
+        airMove.x=sidewayInputVal * stats.AirMoveMultiplier;
+        airMove.z=forwardInputVal * stats.AirMoveMultiplier;
         moveDirection.x *= airDrag * Time.deltaTime; 
         moveDirection.z *= airDrag * Time.deltaTime;
         airMove = transform.TransformDirection(airMove);
@@ -80,11 +77,11 @@ public class CharacterMovement : MonoBehaviour
 
     public void movement(float sidewayInputVal, float forwardInputVal, bool isJumping, bool isAcceleration)
     {
-        sidewayInputVal *= movementSpeed;
+        sidewayInputVal *= stats.MovementSpeed;
         if (isAcceleration)
-            forwardInputVal *= movementSpeed*acceleration;
+            forwardInputVal *= stats.MovementSpeed * stats.Acceleration;
         else
-            forwardInputVal *= movementSpeed;
+            forwardInputVal *= stats.MovementSpeed;
 
         if (charController.isGrounded && !onSlope())
         {
@@ -102,7 +99,7 @@ public class CharacterMovement : MonoBehaviour
         if (isJumping && !isJump && charController.isGrounded)
         {
             isJump = isJumping;
-            moveDirection.y = jumpSpeed;
+            moveDirection.y = stats.JumpSpeed;
         }
         else if (charController.isGrounded)
         {

@@ -3,23 +3,26 @@ using System.Collections;
 
 public class RotationInputController : MonoBehaviour
 {
-    [SerializeField]
+    
+    [SerializeField] private string horizonInputName;
+    [SerializeField] private string vertiInputName;
+    private CharacterStats stats;
     private PlayerRotation playerRotation;
-
-    [SerializeField]
-    private string horizonInputName;
-    [SerializeField]
-    private string vertiInputName;
-    [SerializeField]
-    private float rotationSpeed;
 
     private float horizonRotationVal;
     private float vertiRotationVal;
+
+    private void Awake()
+    {
+        stats=GetComponent<CharacterStats>();
+        playerRotation = GetComponent<PlayerRotation>();
+    }
+
     // Update is called once per frame
     void Update()
     {
-        horizonRotationVal = rotationSpeed * Input.GetAxis(horizonInputName) * Time.deltaTime;
-        vertiRotationVal = rotationSpeed * Input.GetAxis(vertiInputName) * Time.deltaTime;
+        horizonRotationVal = stats.RotationSpeed * Input.GetAxis(horizonInputName) * Time.deltaTime;
+        vertiRotationVal = stats.RotationSpeed * Input.GetAxis(vertiInputName) * Time.deltaTime;
         playerRotation.rotatePlayer(horizonRotationVal, vertiRotationVal);
     }
 }

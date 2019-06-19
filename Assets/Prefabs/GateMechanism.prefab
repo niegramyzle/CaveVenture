@@ -69,8 +69,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5626499670346573947}
-  - component: {fileID: 5626499670346573946}
-  - component: {fileID: 5626499670346573924}
   m_Layer: 0
   m_Name: GateMechanism
   m_TagString: Untagged
@@ -96,40 +94,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &5626499670346573946
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5626499670346573945}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.3
-  m_Center: {x: 1.68, y: 0, z: 0}
---- !u!114 &5626499670346573924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5626499670346573945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dfe4786076112948887c56e2f31ee8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cubes:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  placesForCubes:
-  - {fileID: 5626499669566322834}
-  - {fileID: 5626499669992603405}
-  - {fileID: 5626499670497275604}
-  player: {fileID: 0}
 --- !u!1 &5626499670497275604
 GameObject:
   m_ObjectHideFlags: 0

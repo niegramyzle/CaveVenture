@@ -56,11 +56,6 @@ public class EnemyController : MonoBehaviour
         charMov = GetComponent<CharacterMovement>(); 
     }
 
-    private void wander()
-    {
-        //todo
-    }
-
     private void follow()
     {
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation
@@ -73,8 +68,6 @@ public class EnemyController : MonoBehaviour
         float distance = Vector3.Distance(target.position, transform.position);
         if (distance <= lookRadius)
             follow();
-        else
-            wander();
         if (distance < combatRadius)
         {
             Debug.Log("attack");

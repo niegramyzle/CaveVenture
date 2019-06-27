@@ -25,7 +25,7 @@ public class MirrorReflection : MonoBehaviour
         //resetBeams();
         lr.positionCount = 1;
         pointIndex = 0;
-        
+        lr.SetPosition(0, transform.position + transform.forward * 0.75f);
         DrawPredictedReflectionPattern2(transform.position + transform.forward * 0.75f, transform.forward, maxReflectionCount);
     }
 

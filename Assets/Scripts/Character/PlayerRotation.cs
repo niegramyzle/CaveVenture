@@ -72,7 +72,7 @@ public class PlayerRotation : MonoBehaviour
     {
         quaternionToRotate = Quaternion.FromToRotation(playerHeadTransform.transform.forward, playerHeadTransform.up) * playerHeadTransform.rotation;
         quaternionToRotate.eulerAngles = new Vector3(Mathf.Clamp(quaternionToRotate.eulerAngles.x, clampUpDownLimiter, clampUpUpLimiter), quaternionToRotate.eulerAngles.y, quaternionToRotate.eulerAngles.z);
-        if (quaternionToRotate.eulerAngles.x < clampUpUpLimiter-5 && quaternionToRotate.eulerAngles.x >= clampUpDownLimiter)
+        if (quaternionToRotate.eulerAngles.x < clampUpUpLimiter - 5 && quaternionToRotate.eulerAngles.x >= clampUpDownLimiter)
         {
             Quaternion quater = Quaternion.Slerp(playerHeadTransform.rotation, quaternionToRotate, vertiRotationVal);
             playerHeadTransform.rotation = quater;
@@ -104,9 +104,32 @@ public class PlayerRotation : MonoBehaviour
         }
         if (quaternionToRotate.eulerAngles.x > resetDownDownLimiter && quaternionToRotate.eulerAngles.x < resetDownUpLimiter)// taki reset na środku aby się zakres nie przesuwał
             directionRotationVal = 0;
-
     }
 }
 
-
+//[SerializeField]
+//private float rotateSpeed;
+//float rotatVertical = 0.0f;
+//// Update is called once per frame
+//void Update()
+//{
+//    //float rotatVer = Input.GetAxis("Mouse Y") * rotateSpeed;
+//    //if (rotatVer + rotatVertical < 60 && rotatVer + rotatVertical > -30)
+//    //{
+//    //    rotatVertical += rotatVer;
+//    //    transform.eulerAngles = new Vector3(rotatVertical, 0.0f, 0.0f);
+//    //}
+//}
+//}
+////float rotatHor = Input.GetAxis("Mouse X") * rotateSpeed;
+////float rotatVer = Input.GetAxis("Mouse Y") * rotateSpeed;
+////if (rotatVer+rotatVertical < 60 && rotatVer+rotatVertical > -30)
+////{
+////    rotatVertical += rotatVer;
+////    rotatHorizontal -= rotatHor;
+////    transform.eulerAngles = new Vector3(rotatVertical, rotatHorizontal, 0.0f);
+////}
+//////rotatHorizontal *= Time.deltaTime;
+//////rotatVertical *= Time.deltaTime;
+////Debug.Log(rotatVertical + ", " + rotatHorizontal);
 

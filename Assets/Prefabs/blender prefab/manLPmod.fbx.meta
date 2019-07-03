@@ -1,0 +1,310 @@
+fileFormatVersion: 2
+guid: a26e30e33cf98cf4cb667218f11656b8
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: arm.l
+    100002: arm.r.001
+    100004: arm2.l
+    100006: arm2.r.001
+    100008: Armature
+    100010: Bone
+    100012: Bone.001
+    100014: Bone.002
+    100016: Bone.003
+    100018: Bone.003_end
+    100020: Cube
+    100022: foot.l
+    100024: foot.l_end
+    100026: foot.r.001
+    100028: foot.r.001_end
+    100030: hand.l
+    100032: hand.l_end
+    100034: hand.r.001
+    100036: hand.r.001_end
+    100038: leg.l
+    100040: leg.r.001
+    100042: leg2.l
+    100044: leg2.r.001
+    100046: //RootNode
+    400000: arm.l
+    400002: arm.r.001
+    400004: arm2.l
+    400006: arm2.r.001
+    400008: Armature
+    400010: Bone
+    400012: Bone.001
+    400014: Bone.002
+    400016: Bone.003
+    400018: Bone.003_end
+    400020: Cube
+    400022: foot.l
+    400024: foot.l_end
+    400026: foot.r.001
+    400028: foot.r.001_end
+    400030: hand.l
+    400032: hand.l_end
+    400034: hand.r.001
+    400036: hand.r.001_end
+    400038: leg.l
+    400040: leg.r.001
+    400042: leg2.l
+    400044: leg2.r.001
+    400046: //RootNode
+    2100000: Material.004
+    2100002: Material.007
+    2100004: Material.005
+    2100006: Material.001
+    2100008: Material.006
+    2100010: Material.003
+    2100012: Material
+    2100014: Material.002
+    4300000: Cube
+    9500000: //RootNode
+    13700000: Cube
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 982daa05b38a6fd4ea3f150176795d0d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 6c8c02dc0e7e4d24396d760e49ab70bb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: 750649a8c084db94eb9bc8edcbe51939, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.003
+    second: {fileID: 2100000, guid: 15d9544d0fa548342b4f06665338ef0e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.004
+    second: {fileID: 2100000, guid: 296c29bf0b60d7b4dbd10f8ad738a4a7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.005
+    second: {fileID: 2100000, guid: f98162ab847cea342a2d77995735a3dd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.006
+    second: {fileID: 2100000, guid: 23b160c153a0e7347b82e8d6c6dc35f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.007
+    second: {fileID: 2100000, guid: ef209a0d891ea3c4ba918e71c5376174, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton:
+    - name: manLPmod(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Armature
+      parentName: manLPmod(Clone)
+      position: {x: 1.0229205, y: 7.721587, z: -0.060133655}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 358.80136, y: 358.80136, z: 286.4667}
+    - name: Bone
+      parentName: Armature
+      position: {x: -0, y: -0.00012461437, z: 0}
+      rotation: {x: 0.7063394, y: -0.032935716, z: 0.03293578, w: 0.7063393}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: Bone.001
+      parentName: Bone
+      position: {x: -0, y: 0.010043579, z: 4.058087e-14}
+      rotation: {x: -0.068268105, y: -0.70380324, z: -0.06826804, w: 0.70380396}
+      scale: {x: 1, y: 0.9999999, z: 1}
+    - name: Bone.002
+      parentName: Bone.001
+      position: {x: 7.422809e-12, y: 0.010588531, z: -9.8638125e-11}
+      rotation: {x: 0.000000085085695, y: 0.96560454, z: 0.26001528, w: -0.00000067255365}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Bone.003
+      parentName: Bone.002
+      position: {x: 1.4697931e-12, y: 0.0037705575, z: -3.1643025e-11}
+      rotation: {x: 0.118562184, y: 0.00000015818217, z: 0.00000006508556, w: 0.9929466}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Bone.003_end
+      parentName: Bone.003
+      position: {x: -0, y: 0.0086592585, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: arm.l
+      parentName: Bone.001
+      position: {x: -0.0055849943, y: 0.008878874, z: 0.0006560809}
+      rotation: {x: 0.69745815, y: -0.017138312, z: -0.6954718, w: -0.17198072}
+      scale: {x: 0.9999999, y: 1, z: 0.9999999}
+    - name: arm2.l
+      parentName: arm.l
+      position: {x: 1.4901161e-10, y: 0.009235217, z: -0.0000000010769985}
+      rotation: {x: -0.1232707, y: -0.0074815704, z: 0.060106575, w: 0.99052286}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1}
+    - name: hand.l
+      parentName: arm2.l
+      position: {x: 9.0092595e-12, y: 0.009054588, z: 8.6232174e-11}
+      rotation: {x: -0.000000017689393, y: 0.9995418, z: -0.030267376, w: -0.0000017446919}
+      scale: {x: 1, y: 0.9999998, z: 0.99999994}
+    - name: hand.l_end
+      parentName: hand.l
+      position: {x: -0, y: 0.0031240922, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: arm.r.001
+      parentName: Bone.001
+      position: {x: 0.00563711, y: 0.0088788755, z: 0.0006560696}
+      rotation: {x: 0.7182541, y: 0.17245582, z: -0.6739733, w: 0.011402738}
+      scale: {x: 0.9999997, y: 0.9999998, z: 0.99999976}
+    - name: arm2.r.001
+      parentName: arm.r.001
+      position: {x: -1.8626451e-11, y: 0.009235216, z: -4.5169143e-10}
+      rotation: {x: 0.12120589, y: -0.025432225, z: 0.064168364, w: 0.9902246}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: hand.r.001
+      parentName: arm2.r.001
+      position: {x: 1.9898434e-11, y: 0.00905459, z: -1.2218293e-10}
+      rotation: {x: 0.00000003264391, y: 0.9995418, z: 0.03026741, w: -0.0000017442391}
+      scale: {x: 1, y: 0.9999998, z: 0.99999994}
+    - name: hand.r.001_end
+      parentName: hand.r.001
+      position: {x: -0, y: 0.0031240922, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: leg.l
+      parentName: Bone
+      position: {x: -0.00020711652, y: -0.0016123117, z: -0.002594249}
+      rotation: {x: 0.99822116, y: -0.05229747, z: 0.0011713812, w: -0.028603353}
+      scale: {x: 1.0000026, y: 1, z: 1.0000007}
+    - name: leg2.l
+      parentName: leg.l
+      position: {x: -1.0186341e-12, y: 0.010887135, z: -1.4856034e-10}
+      rotation: {x: -0.0049935807, y: 0.00003023116, z: -0.01163004, w: 0.99991995}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.9999999}
+    - name: foot.l
+      parentName: leg2.l
+      position: {x: -3.1868695e-11, y: 0.010547938, z: 1.4855459e-11}
+      rotation: {x: 0.38323262, y: -0.5755719, z: 0.4111279, w: 0.59398955}
+      scale: {x: 1, y: 1.0000002, z: 1.0000001}
+    - name: foot.l_end
+      parentName: foot.l
+      position: {x: -0, y: 0.003906181, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: leg.r.001
+      parentName: Bone
+      position: {x: -0.00020711696, y: -0.0016123115, z: 0.002660323}
+      rotation: {x: 0.9982204, y: -0.05231211, z: -0.0018265663, w: 0.028569978}
+      scale: {x: 1.0000021, y: 0.99999994, z: 1.0000006}
+    - name: leg2.r.001
+      parentName: leg.r.001
+      position: {x: -2.0954757e-11, y: 0.010887134, z: -6.420487e-10}
+      rotation: {x: 0.004993153, y: 0.0012471995, z: -0.011630205, w: 0.9999192}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: foot.r.001
+      parentName: leg2.r.001
+      position: {x: -1.8917489e-11, y: 0.0105479425, z: 3.2609476e-10}
+      rotation: {x: 0.41088918, y: -0.5943473, z: 0.38348737, w: 0.5752033}
+      scale: {x: 1.0000001, y: 1.0000002, z: 1.0000001}
+    - name: foot.r.001_end
+      parentName: foot.r.001
+      position: {x: -0, y: 0.003906181, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cube
+      parentName: manLPmod(Clone)
+      position: {x: 0.00000023841858, y: 0.0000009536743, z: 0.000000011175871}
+      rotation: {x: -0.7071068, y: -0.000000009451469, z: -7.6991986e-16, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

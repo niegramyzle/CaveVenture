@@ -12,8 +12,10 @@ public class MeleeWeapon : Weapon
             hitTimeFlag = true;
             onHit = true;
             endAnimFlag = false;
-            Debug.Log("trr");
-            anim.SetBool("attack", true);
+            if (anim != null)
+                anim.SetBool("attack", true);
+            else
+                Debug.Log("AAAAAAAAAAAAAAAAA");
             StartCoroutine(makeHit());
         }
     }

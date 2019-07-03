@@ -18,7 +18,10 @@ public abstract class Weapon : MonoBehaviour
 
     private void Awake()
     {
+        
         anim = transform.GetComponent<Animator>();
+        if(anim==null)
+Debug.Log(transform.name);
     }
 
     public void endAnim()

@@ -122,5 +122,3 @@ public class CharacterMovement : MonoBehaviour
         return false;
     }
 }
-
-

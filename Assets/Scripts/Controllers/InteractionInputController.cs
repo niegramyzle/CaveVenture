@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class InteractionInputController : MonoBehaviour
 {
-    [SerializeField] string interactionKeyName;
+    [SerializeField] private string interactionKeyName;
+    [SerializeField] private KeyCode right;
+    [SerializeField] private KeyCode left;
 
     public bool OnClickInteraction()
     {
@@ -18,4 +20,13 @@ public class InteractionInputController : MonoBehaviour
         return Input.GetKeyUp(interactionKeyName);
     }
 
+    public bool OnLeft()
+    {
+        return Input.GetKey(left);
+    }
+
+    public bool OnRight()
+    {
+        return Input.GetKey(right);
+    }
 }

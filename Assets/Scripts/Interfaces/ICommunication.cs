@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LaserContact : MonoBehaviour
+public interface ICommunication
 {
-
+    void makeCommunication();
 }

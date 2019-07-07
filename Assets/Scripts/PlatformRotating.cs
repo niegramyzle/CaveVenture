@@ -39,12 +39,16 @@ public class PlatformRotating : MonoBehaviour
         if (player.OnClickInteraction())
         {
             anim.speed = 1;
-            Debug.Log("FDDD");
             StartCoroutine(doRotation());
         }
         else
         {
             anim.speed = 0;
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        anim.speed = 0;
     }
 }

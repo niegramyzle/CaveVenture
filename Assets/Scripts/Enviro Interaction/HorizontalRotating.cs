@@ -27,7 +27,7 @@ public class HorizontalRotating : MonoBehaviour
         startTime = Time.time;
         do
         {
-            quatToRotate = Quaternion.FromToRotation(transform.right*direction, transform.forward) * transform.rotation;
+            quatToRotate = Quaternion.FromToRotation(transform.right*direction, transform.up) * transform.rotation;
             quater = Quaternion.Slerp(transform.rotation, quatToRotate, rotateSpeed * Time.deltaTime);
             transform.rotation = quater;
             time = Time.time;

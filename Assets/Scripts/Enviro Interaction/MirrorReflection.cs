@@ -9,8 +9,8 @@ public class MirrorReflection : MonoBehaviour
     [SerializeField] private int maxReflectionCount;
     [SerializeField] private float maxStepDistance;
     [SerializeField] List<GameObject> reflectingObjects;
-    [SerializeField] GameObject mainTarget;
-
+    [SerializeField] List<GameObject> mainTargets;
+    private bool hitTargetFlag;
     private LineRenderer lineRenderer;
     private int pointIndex;
 
@@ -22,7 +22,7 @@ public class MirrorReflection : MonoBehaviour
         lineRenderer.SetPosition(0, transform.position + transform.forward * 0.75f);
         foreach(var elem in reflectingObjects)
         {
-            var obj = elem.GetComponent<HorizontalRotating>();
+            var obj = elem.transform.parent.GetComponent<HorizontalRotating>();
             if(obj!=null)
             {
                 obj.updateDependentMethod += laserFire;
@@ -31,13 +31,14 @@ public class MirrorReflection : MonoBehaviour
         laserFire();
     }
 
-    //void Update()
-    //{
-    //        lineRenderer.positionCount = 1;
-    //        pointIndex = 0;
-    //        lineRenderer.SetPosition(0, transform.position + transform.forward * 0.75f);
-    //        DrawPredictedReflectionPatternLoop(transform.position+ transform.forward, transform.forward);
-    //}
+/*     void Update()
+    {
+        if(!hitTargetFlag)
+            {lineRenderer.positionCount = 1;
+            pointIndex = 0;
+            lineRenderer.SetPosition(0, transform.position + transform.forward * 0.75f);
+            DrawPredictedReflectionPatternLoop(transform.position+ transform.forward, transform.forward);}
+    } */
 
     void laserFire()
     {
@@ -103,9 +104,12 @@ public class MirrorReflection : MonoBehaviour
                 var target = reflectingObjects.Find(elem => hit.collider.gameObject == elem);
                 if (target != null)
                 {
-                    if (target == mainTarget)
+                    var mainTarget=mainTargets.Find(t=> t==target);
+                    if (mainTarget!=null)
                     {
-                        mainTarget.GetComponent<LaserContact>().makeCommunication();
+                        Debug.Log("traf");
+                        mainTarget.GetComponent<IInteractableObject>().OnObjectClick();
+                        //hitTargetFlag=true;
                         break;
                     }
                     direction = Vector3.Reflect(direction, hit.normal);

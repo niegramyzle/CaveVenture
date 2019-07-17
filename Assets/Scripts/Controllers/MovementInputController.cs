@@ -50,15 +50,14 @@ public class MovementInputController : MonoBehaviour
             speedZoomingOff();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Update()
     {
-        if (Input.GetKey(jumpKey))
-        {
-            isJumping = true;
-        }
-        doubleSpeed();
-        playerMovement.movement(Input.GetAxis(horizonInputName), Input.GetAxis(vertiInputName), isJumping, isAcceleration);
-        isJumping = false;
+        //if (Input.GetKey(jumpKey))
+        //{
+        //    isJumping = true;
+        //}
+        //doubleSpeed();
+        //playerMovement.movement(Input.GetAxis(horizonInputName), Input.GetAxis(vertiInputName), isJumping, isAcceleration);
+        //isJumping = false;
     }
 }

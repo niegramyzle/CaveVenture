@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
         postionChange = Vector3.zero;
 
         onUpdate();
+       
 
         player.Move(postionChange);
     }

@@ -24,11 +24,9 @@ public class MeleeWeapon : Weapon
     {
         do
         {
-            Debug.Log("korr");
             yield return null;
         } while (!endAnimFlag);
         anim.SetBool("attack", false);
-        Debug.Log("fal");
         onHit = false;
         hitTimeFlag = false;
     }

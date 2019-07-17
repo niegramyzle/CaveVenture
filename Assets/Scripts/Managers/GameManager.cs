@@ -4,27 +4,28 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private CharacterStats playerStats;
 
-    private bool isPlayerAlive()
+    private void Start()
     {
-        return true;
+        playerStats=PlayerManager.instance.Player.GetComponent<CharacterStats>();
+    }
+    
+    private bool isPlayerDead()
+    {
+        return playerStats.IsDied;
     }
 
-    private void gameOver()
+    private void respawnPlayer()
     {
-        //SceneManager.LoadScene("SampleScene");
+
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(isPlayerAlive())
+        if (isPlayerDead())
         {
-            
-        }
-        else
-        {
-            gameOver();
+ 
         }
     }
 }

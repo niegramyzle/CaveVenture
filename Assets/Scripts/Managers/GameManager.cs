@@ -4,27 +4,33 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private CheckpointController currentCheckpoint;
+    private CharacterStats playerStats;
 
-    private bool isPlayerAlive()
+    private void Start()
     {
-        return true;
+        currentCheckpoint = GetComponent<CheckpointController>();
+        playerStats=PlayerManager.instance.Player.GetComponent<CharacterStats>();
+    }
+    
+    private bool isPlayerDead()
+    {
+        return playerStats.IsDied;
     }
 
-    private void gameOver()
+    private void respawnPlayer()
     {
-        //SceneManager.LoadScene("SampleScene");
+        PlayerManager.instance.Player.GetComponent<CharacterController>().enabled = false;
+        PlayerManager.instance.Player.transform.position=currentCheckpoint.CurrentCheckpoint;
+        PlayerManager.instance.Player.GetComponent<CharacterController>().enabled = true;
+        playerStats.resetStats();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(isPlayerAlive())
+        if (isPlayerDead())
         {
-            
-        }
-        else
-        {
-            gameOver();
+            respawnPlayer();
         }
     }
 }

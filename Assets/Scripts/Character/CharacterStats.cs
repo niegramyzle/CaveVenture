@@ -45,4 +45,10 @@ public class CharacterStats : MonoBehaviour
 
     public bool IsDied { get; set; }
 
+    public void resetStats()
+    {
+        IsDied=false;
+        Health=10;
+    }
+
 }

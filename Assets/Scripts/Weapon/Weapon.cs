@@ -20,13 +20,10 @@ public abstract class Weapon : MonoBehaviour
     {
         
         anim = transform.GetComponent<Animator>();
-        if(anim==null)
-Debug.Log(transform.name);
     }
 
     public void endAnim()
     {
-        Debug.Log("XDDDDDDDDDDDDD");
         endAnimFlag = true;
     }
 
@@ -34,11 +31,9 @@ Debug.Log(transform.name);
     {
         if (onHit && generalParent!=other.gameObject)
         {
-            Debug.Log("hit");
             CombatController target = other.gameObject.GetComponent<CombatController>();
             if (target != null)
             {
-                Debug.Log(other.gameObject.name);
                 target.takeDamage(damage);
                 onHit = false;
             }

@@ -2,15 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class GameManager : MonoBehaviour
 {
     private CheckpointController currentCheckpoint;
     private CharacterStats playerStats;
 
+    [SerializeField] private List<SpawnController> spawns;
+
     private void Start()
     {
         currentCheckpoint = GetComponent<CheckpointController>();
         playerStats=PlayerManager.instance.Player.GetComponent<CharacterStats>();
+
+        foreach(var spawn in spawns)
+        {
+            spawn.SpawnMobs();
+        }
     }
     
     private bool isPlayerDead()

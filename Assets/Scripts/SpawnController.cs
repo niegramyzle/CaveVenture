@@ -18,7 +18,7 @@ public class SpawnController : MonoBehaviour
         Vector3 offset = new Vector3();
         Quaternion quat = new Quaternion();
         int num=enemiesCount;
-        var enemies = enemyManager.getEnemies();
+        var enemies = enemyManager.enemies;
         foreach(var mob in enemies)
         {
             offset.x = Random.Range(0, maxRange);

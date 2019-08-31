@@ -31502,7 +31502,7 @@ GameObject:
   - component: {fileID: 1402864406}
   - component: {fileID: 1402864395}
   - component: {fileID: 1402864396}
-  - component: {fileID: 1402864407}
+  - component: {fileID: 1402864408}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -31723,7 +31723,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxActivateDistance: 3
   camera: {fileID: 356546601}
---- !u!114 &1402864407
+--- !u!114 &1402864408
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -31732,16 +31732,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1402864392}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cf8e3b366cfdcd4ebe106b03f2f3b5e, type: 3}
+  m_Script: {fileID: 11500000, guid: 298d2c1687eae9d44b2d13326590ece0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
-  gravity: 1
-  rigidbody: {fileID: 0}
-  camera: {fileID: 1460120059}
-  player: {fileID: 1402864397}
-  jumpDuration: 0.5
-  jumpForce: 2
+  fullPlayerTransform: {fileID: 1402864398}
+  headTransform: {fileID: 1460120059}
+  axes: 0
+  sensitivityX: 5
+  sensitivityY: 5
+  minimumX: -360
+  maximumX: 360
+  minimumY: -60
+  maximumY: 60
 --- !u!1 &1403875084
 GameObject:
   m_ObjectHideFlags: 0
@@ -39985,6 +39987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc640438239816e4cacc85c96cbca03d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawns: []
 --- !u!114 &1565413225
 MonoBehaviour:
   m_ObjectHideFlags: 0

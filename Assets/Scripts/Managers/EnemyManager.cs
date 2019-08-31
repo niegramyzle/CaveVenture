@@ -12,9 +12,8 @@ public class EnemyManager : MonoBehaviour
     }
     #endregion
 
+    public List<EnemyController> enemies;
 
-    [SerializeField]
-    List<EnemyController> enemies;
 
     // Update is called once per frame
     void Update()

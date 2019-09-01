@@ -22,14 +22,14 @@ public class AudioManager : MonoBehaviour
         foreach (var sound in sounds)
         {
             sound.audioSource = gameObject.AddComponent<AudioSource>();
-            sound.audioSource.clip = sound.AudioClipSound;
-            sound.audioSource.volume = sound.Volume;
-            sound.audioSource.pitch = sound.Pitch;
+            sound.audioSource.clip = sound.audioClipSound;
+            sound.audioSource.volume = sound.volume;
+            sound.audioSource.pitch = sound.pitch;
         }
     }
 
     public void PlaySound(string _audioClipName)
     {
-        sounds.Find(soundItem=> soundItem.AudioClipName == _audioClipName).audioSource.Play();
+        sounds.Find(soundItem=> soundItem.audioClipName == _audioClipName).audioSource.Play();
     }
 }

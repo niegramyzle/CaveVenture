@@ -47,8 +47,20 @@ public class PlatformRotating : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject == PlayerManager.instance.Player)
+        {
+            CommunicateManager.instance.ShowMessageOnUI("Press F to rotate.");
+        }
+    }
+
     private void OnTriggerExit(Collider other)
     {
-        anim.speed = 0;
+        if (other.gameObject == PlayerManager.instance.Player)
+        {
+            CommunicateManager.instance.ResetText();
+        }
+            anim.speed = 0;
     }
 }

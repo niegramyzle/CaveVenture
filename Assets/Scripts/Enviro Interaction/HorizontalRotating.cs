@@ -38,9 +38,9 @@ public class HorizontalRotating : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        CommunicateManager.instance.ShowMessageOnUI("Press left(Q) or right(E) key to rotate.");
         if (interaction.OnLeft())
         {
-
             updateDependentMethod();
             StartCoroutine(doRotation(-1));
         } 
@@ -51,5 +51,10 @@ public class HorizontalRotating : MonoBehaviour
             StartCoroutine(doRotation(1));
         }
 
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        CommunicateManager.instance.ResetText();
     }
 }

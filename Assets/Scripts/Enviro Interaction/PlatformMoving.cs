@@ -29,6 +29,21 @@ public class PlatformMoving : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject == PlayerManager.instance.Player)
+        {
+            CommunicateManager.instance.ShowMessageOnUI("Press F to click.");
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject == PlayerManager.instance.Player)
+        {
+            CommunicateManager.instance.ResetText();
+        }
+    }
 
     private void OnTriggerStay(Collider other)
     {

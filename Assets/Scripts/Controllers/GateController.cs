@@ -11,6 +11,7 @@ public class GateController : MonoBehaviour
     private Animator anim;
     private int placeIndex;
     private bool isReady;
+    private string text="get a cube.";
 
     private void Awake()
     {
@@ -42,6 +43,7 @@ public class GateController : MonoBehaviour
     {
         if (placeIndex == cubes.Capacity)
         {
+            text = "open a gate.";
             isReady = true;
         }
     }
@@ -50,6 +52,18 @@ public class GateController : MonoBehaviour
     {
         anim.speed = 1;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject == PlayerManager.instance.Player)
+            CommunicateManager.instance.ShowMessageOnUI("Press F to "+ text);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        CommunicateManager.instance.ResetText();
+    }
+
 
     private void OnTriggerStay(Collider other)
     {
@@ -62,6 +76,7 @@ public class GateController : MonoBehaviour
             else if (isReady)
             {
                 openGate();
+                gameObject.GetComponent<Collider>().enabled = false;
             }
         }
     }

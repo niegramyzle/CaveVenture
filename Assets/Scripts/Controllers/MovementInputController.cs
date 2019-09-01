@@ -52,12 +52,12 @@ public class MovementInputController : MonoBehaviour
 
     public void Update()
     {
-        //if (Input.GetKey(jumpKey))
-        //{
-        //    isJumping = true;
-        //}
-        //doubleSpeed();
-        //playerMovement.movement(Input.GetAxis(horizonInputName), Input.GetAxis(vertiInputName), isJumping, isAcceleration);
-        //isJumping = false;
+        if (Input.GetKey(jumpKey))
+        {
+            isJumping = true;
+        }
+        doubleSpeed();
+        playerMovement.movement(Input.GetAxis(horizonInputName), Input.GetAxis(vertiInputName), isJumping, isAcceleration);
+        isJumping = false;
     }
 }

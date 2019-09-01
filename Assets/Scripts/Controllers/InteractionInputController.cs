@@ -29,4 +29,5 @@ public class InteractionInputController : MonoBehaviour
     {
         return Input.GetKey(right);
     }
+
 }

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 
 
@@ -8,6 +10,8 @@ public class GameManager : MonoBehaviour
 {
     private CheckpointController currentCheckpoint;
     private CharacterStats playerStats;
+    [SerializeField] private GameObject deadInfo;
+    [SerializeField] private Button spawnButton;
 
     [SerializeField] private List<SpawnController> spawns;
 
@@ -27,8 +31,10 @@ public class GameManager : MonoBehaviour
         return playerStats.IsDied;
     }
 
-    private void respawnPlayer()
+    public void respawnPlayer()
     {
+        Time.timeScale = 1;
+        deadInfo.SetActive(false);
         PlayerManager.instance.Player.GetComponent<CharacterController>().enabled = false;
         PlayerManager.instance.Player.transform.position=currentCheckpoint.CurrentCheckpoint;
         PlayerManager.instance.Player.GetComponent<CharacterController>().enabled = true;
@@ -39,7 +45,8 @@ public class GameManager : MonoBehaviour
     {
         if (isPlayerDead())
         {
-            respawnPlayer();
+            deadInfo.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 }

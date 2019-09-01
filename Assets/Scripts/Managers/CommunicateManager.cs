@@ -21,7 +21,7 @@ public class CommunicateManager : MonoBehaviour
             return;
         }
     }
-
+    
     public void ResetText()
     {
         TextBox.text = "";

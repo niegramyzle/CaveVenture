@@ -14,6 +14,19 @@ public class LeverController : MonoBehaviour, IInteractableObject
     private bool leverLogicState = false;
     private Tween currentAnimation;
 
+    [SerializeField] private Transform openableObject;
+    private IOpenable openable;
+
+    private Action activatingObject=delegate { };
+    private void Start()
+    {
+        if (openableObject != null)
+        {
+            openable=openableObject.GetComponent<IOpenable>();
+            activatingObject += openable.OpenOnce;
+        }
+    }
+
     public bool getLeverLogicState() 
     { 
         return this.leverLogicState;  
@@ -27,6 +40,8 @@ public class LeverController : MonoBehaviour, IInteractableObject
         Vector3 direction = currentMovementState ? onRotation : offRotation;
 
         currentAnimation = leverArm.DOLocalRotate(direction, animationDuration).OnComplete(UpdateLogicState);
+
+        activatingObject();
     }
 
     private void UpdateLogicState()

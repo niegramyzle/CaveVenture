@@ -4,14 +4,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    #region Singleton
     public static PlayerManager instance;
-    private void Awake()
-    {
-        instance = this;
-    }
-    #endregion
-
     [SerializeField]
     private GameObject player;
     public  GameObject Player
@@ -19,4 +12,22 @@ public class PlayerManager : MonoBehaviour
         get { return player; }
         set { player = value; }
     }
+
+    private void Awake()
+    {
+        //Debug.Log("PlayManagerAw");
+        //if (instance == null)
+        //{
+        //    instance = this;
+        //}
+        //else
+        //{
+        //    Destroy(gameObject);
+        //    return;
+        //}
+        instance = this;
+    }
+
+
+    
 }

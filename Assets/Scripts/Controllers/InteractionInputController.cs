@@ -30,4 +30,9 @@ public class InteractionInputController : MonoBehaviour
         return Input.GetKey(right);
     }
 
+    public bool OnEscape()
+    {
+        return Input.GetKeyDown(KeyCode.Escape);
+    }
+
 }

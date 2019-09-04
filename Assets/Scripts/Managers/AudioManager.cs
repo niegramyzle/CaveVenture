@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("AudiManagerAw");
         if (instance == null)
         {
             instance = this;

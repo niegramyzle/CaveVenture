@@ -14,15 +14,20 @@ public class EnemyManager : MonoBehaviour
 
     public List<EnemyController> enemies;
 
-
-    // Update is called once per frame
-    void Update()
+    public void Clear()
     {
+        enemies.Clear();
+    }
+
+    public void OnUpdate()
+    {
+        Debug.Log("EnemyManageroup");
+        //   Debug.Log("fffd");
         foreach (var enemy in enemies)
         {
             if (enemy.gameObject.activeSelf && !enemy.IsDied())
             {
-            enemy.UpdateEnemy();
+                enemy.UpdateEnemy();
             }
         }
     }

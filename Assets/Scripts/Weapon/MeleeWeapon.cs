@@ -7,15 +7,12 @@ public class MeleeWeapon : Weapon
 
     public override void hit()
     {
-        if(!hitTimeFlag)
+        if (!hitTimeFlag)
         {
             hitTimeFlag = true;
             onHit = true;
-            endAnimFlag = false;
-            if (anim != null)
+            if(anim.GetCurrentAnimatorStateInfo(0).IsName("idle"))
                 anim.SetBool("attack", true);
-            else
-                Debug.Log("AAAAAAAAAAAAAAAAA");
             StartCoroutine(makeHit());
         }
     }
@@ -25,7 +22,8 @@ public class MeleeWeapon : Weapon
         do
         {
             yield return null;
-        } while (!endAnimFlag);
+        } while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
+        Debug.Log(anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
         anim.SetBool("attack", false);
         onHit = false;
         hitTimeFlag = false;

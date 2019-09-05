@@ -9,28 +9,18 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected float attackSpeed;
     [SerializeField] protected float previousHitTime;
     [SerializeField] private GameObject generalParent;
-    protected Animator anim;
-    protected bool onHit;
+    [SerializeField] protected Animator anim;
+    protected bool onHit=false;
     protected bool hitTimeFlag;
     protected bool endAnimFlag;
 
     public abstract void hit();
 
-    private void Awake()
-    {
-        
-        anim = transform.GetComponent<Animator>();
-    }
-
-    public void endAnim()
-    {
-        endAnimFlag = true;
-    }
-
     private void OnTriggerStay(Collider other)
     {
         if (onHit && generalParent!=other.gameObject)
         {
+            Debug.Log("assd");
             CombatController target = other.gameObject.GetComponent<CombatController>();
             if (target != null)
             {

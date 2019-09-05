@@ -436,7 +436,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6696736613954854173}
   - component: {fileID: 6696736613954854169}
-  - component: {fileID: 6696736613954854174}
   - component: {fileID: 6696736613954854175}
   - component: {fileID: 6696736613954854172}
   m_Layer: 0
@@ -471,21 +470,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.9482384, y: 0.18976212, z: 1.0812703}
-  m_Center: {x: -0.0112400055, y: -0.19201279, z: 0.040635213}
---- !u!135 &6696736613954854174
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6696736613954854146}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.6
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.9482384, y: 0.9431896, z: 1.8613837}
+  m_Center: {x: -0.011239989, y: 0.18470097, z: 0.43069196}
 --- !u!54 &6696736613954854175
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -516,8 +502,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   cooldown: 2
+  attackSpeed: 0
   previousHitTime: 0
-  parent: {fileID: 6696736614159501688}
+  generalParent: {fileID: 0}
 --- !u!1 &6696736614159501688
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,8 +556,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3, y: 0.2, z: 1}
-  m_Center: {x: 0, y: -0.2, z: 0}
+  m_Size: {x: 3, y: 0.28432837, z: 1}
+  m_Center: {x: 0, y: -0.15783636, z: 0}
 --- !u!135 &6696736614159501681
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -582,8 +569,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.61044073
+  m_Center: {x: -0.026565015, y: 0.109677374, z: 5.7517446e-10}
 --- !u!143 &6696736614159501690
 CharacterController:
   m_ObjectHideFlags: 0
@@ -616,7 +603,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lookRadius: 20
   combatRadius: 1.5
-  rotationSpeed: 5
   weapon: {fileID: 6696736613954854172}
 --- !u!114 &6696736614159501687
 MonoBehaviour:
@@ -631,11 +617,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   airDrag: 10
-  jumpSpeed: 12
-  movementSpeed: 8
-  acceleration: 0
-  gravityMultiplier: 4
-  airMoveMultiplier: 0.6
   slopeForce: 100
   slopeForceRayLenght: 1.5
 --- !u!114 &6696736614159501686
@@ -650,9 +631,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ce9f87f571d684b897b96ff0bfc427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  cooldown: 2
-  attackSpeed: 0
 --- !u!114 &6696736614159501680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -665,7 +643,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b7d1d239c218c541a4f6954d04c55f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationSpeed: 0
   health: 3
+  jumpSpeed: 0
+  movementSpeed: 0
+  acceleration: 0
+  gravityMultiplier: 0
+  airMoveMultiplier: 0
 --- !u!95 &6696736614159501683
 Animator:
   serializedVersion: 3

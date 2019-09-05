@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour
     private CharacterStats stats;
     private Animator anim;
     private bool diedFlag, deathAnimFlag;
+    private float attackDistance = 2;
 
     [SerializeField]
     Weapon weapon;
@@ -56,11 +57,18 @@ public class EnemyController : MonoBehaviour
         charMov = GetComponent<CharacterMovement>(); 
     }
 
+    public bool distanceToPlayer()
+    {
+        Vector3 distance = transform.position - PlayerManager.instance.Player.transform.position;
+        return  Mathf.Sqrt(distance.x*distance.x+distance.y*distance.y+distance.z*distance.z)< attackDistance ? true: false;
+    }
+
     private void follow()
     {
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation
             (target.position - transform.position), stats.RotationSpeed * Time.deltaTime);
-        charMov.movement(0, 1, false, false);
+        if(!distanceToPlayer())
+            charMov.movement(0, 1, false, false);
     }
 
     public void UpdateEnemy()

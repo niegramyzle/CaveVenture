@@ -20,13 +20,16 @@ public abstract class Weapon : MonoBehaviour
     {
         if (onHit && generalParent!=other.gameObject)
         {
-            Debug.Log("assd");
             CombatController target = other.gameObject.GetComponent<CombatController>();
             if (target != null)
             {
                 target.takeDamage(damage);
                 onHit = false;
             }
+        }
+        else
+        {
+            Debug.Log(onHit);
         }
     }
 }

@@ -24,7 +24,6 @@ public class MeleeWeapon : Weapon
         {
             yield return null;
         } while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
-        Debug.Log(anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
         anim.SetBool("attack", false);
         onHit = false;
         hitTimeFlag = false;

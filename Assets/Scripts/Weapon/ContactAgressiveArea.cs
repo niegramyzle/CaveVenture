@@ -8,15 +8,15 @@ public class ContactAgressiveArea : Weapon
     {
         if (Time.time - previousHitTime >= cooldown)
         {
+            Debug.Log("xd");
             onHit = true;
             previousHitTime = Time.time;
-            StartCoroutine(makeHit());
+           // StartCoroutine(makeHit());
         }
     }
-
-    private IEnumerator makeHit()
-    {
-        yield return new WaitForSeconds(1);
-        onHit = false;
-    }
+    //private IEnumerator makeHit()
+    //{
+    //    yield return null;
+    //    onHit = false;
+    //}
 }

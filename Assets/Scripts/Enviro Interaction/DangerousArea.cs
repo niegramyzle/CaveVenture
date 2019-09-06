@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DangerousArea : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         GetComponent<ContactAgressiveArea>().hit();
     }

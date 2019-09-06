@@ -4737,6 +4737,9 @@ GameObject:
   - component: {fileID: 4434666260083814495}
   - component: {fileID: 4434666260083814492}
   - component: {fileID: 4434666260083814497}
+  - component: {fileID: 1872791685288944288}
+  - component: {fileID: 4336402400274618530}
+  - component: {fileID: 1837237937526708117}
   m_Layer: 0
   m_Name: Fire
   m_TagString: Untagged
@@ -9472,3 +9475,46 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!135 &1872791685288944288
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4434666260083814493}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.020561
+  m_Center: {x: -0.17513919, y: 0.79176974, z: -0.00028717518}
+--- !u!114 &4336402400274618530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4434666260083814493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9070e1bd2ea1afa43b9f9a77558cfe06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 4
+  cooldown: 1
+  attackSpeed: 0
+  previousHitTime: 0
+  generalParent: {fileID: 4434666260083814493}
+  anim: {fileID: 0}
+--- !u!114 &1837237937526708117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4434666260083814493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 256fac92e3138954aad34c2d183911d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

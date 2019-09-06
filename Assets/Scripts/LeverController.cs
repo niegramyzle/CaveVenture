@@ -48,4 +48,15 @@ public class LeverController : MonoBehaviour, IInteractableObject
     {
         leverLogicState = currentMovementState;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        CommunicateManager.instance.ShowMessageOnUI("Press I key towards lever.");
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        CommunicateManager.instance.ResetText();
+    }
+
 }

@@ -9,6 +9,7 @@ public class MeleeWeapon : Weapon
     {
         if (!hitTimeFlag)
         {
+
             hitTimeFlag = true;
             onHit = true;
             if(anim.GetCurrentAnimatorStateInfo(0).IsName("idle"))

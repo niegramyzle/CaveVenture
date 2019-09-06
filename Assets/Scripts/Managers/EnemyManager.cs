@@ -21,7 +21,7 @@ public class EnemyManager : MonoBehaviour
 
     public void OnUpdate()
     {
-        Debug.Log("EnemyManageroup");
+        //Debug.Log("EnemyManageroup");
         //   Debug.Log("fffd");
         foreach (var enemy in enemies)
         {

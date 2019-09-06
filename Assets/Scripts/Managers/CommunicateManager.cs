@@ -11,7 +11,7 @@ public class CommunicateManager : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("ComManagerAw");
+        //Debug.Log("ComManagerAw");
         if (instance == null)
         {
             instance = this;

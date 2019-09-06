@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("GameManagerUP");
+        //Debug.Log("GameManagerUP");
         if (isPlayerDead())
         {
             deadInfo.SetActive(true);

@@ -27,9 +27,5 @@ public abstract class Weapon : MonoBehaviour
                 onHit = false;
             }
         }
-        else
-        {
-            Debug.Log(onHit);
-        }
     }
 }

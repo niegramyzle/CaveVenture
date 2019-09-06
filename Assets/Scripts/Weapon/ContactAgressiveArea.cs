@@ -6,6 +6,7 @@ public class ContactAgressiveArea : Weapon
 {
     public override void hit()
     {
+        Debug.Log("xd");
         if (Time.time - previousHitTime >= cooldown)
         {
             Debug.Log("xd");

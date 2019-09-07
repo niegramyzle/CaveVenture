@@ -12,7 +12,6 @@ public class CombatController : MonoBehaviour
 
     public void takeDamage(int dmg)
     {
-        Debug.Log(stats.Health);
         stats.Health -= dmg;
         if (stats.Health <= 0)
             stats.IsDied = true;

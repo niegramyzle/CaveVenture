@@ -14,6 +14,8 @@ public class CharacterMovement : MonoBehaviour
     private Vector3 airMove;
     private bool isJump;
 
+    public float gravityMultiplier=1;
+
     public Vector3 Offset { get; set; }
     public bool OnPlatform { get; set; }
 
@@ -49,7 +51,7 @@ public class CharacterMovement : MonoBehaviour
     {
         moveDirection.x = sidewayInputVal;
         moveDirection.z = forwardInputVal;
-        moveDirection.y = Physics.gravity.y * slopeForce * Time.deltaTime;
+        moveDirection.y = Physics.gravity.y* gravityMultiplier * slopeForce * Time.deltaTime;
         moveDirection = transform.TransformDirection(moveDirection);
         charController.Move(moveDirection * Time.deltaTime); 
         moveDirection.y = 0;
@@ -63,7 +65,7 @@ public class CharacterMovement : MonoBehaviour
         }
         else
         {
-            moveDirection.y += Physics.gravity.y * stats.GravityMultiplier * Time.deltaTime;
+            moveDirection.y += Physics.gravity.y*gravityMultiplier * stats.GravityMultiplier * Time.deltaTime;
         }
 
         airMove.x=sidewayInputVal * stats.AirMoveMultiplier;

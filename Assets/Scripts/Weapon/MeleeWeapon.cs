@@ -9,7 +9,6 @@ public class MeleeWeapon : Weapon
     {
         if (!hitTimeFlag)
         {
-
             hitTimeFlag = true;
             onHit = true;
             if(anim.GetCurrentAnimatorStateInfo(0).IsName("idle"))
@@ -23,7 +22,7 @@ public class MeleeWeapon : Weapon
         do
         {
             yield return null;
-        } while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
+        } while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1f);
         anim.SetBool("attack", false);
         onHit = false;
         hitTimeFlag = false;

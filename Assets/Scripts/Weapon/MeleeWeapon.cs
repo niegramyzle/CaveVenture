@@ -22,7 +22,7 @@ public class MeleeWeapon : Weapon
         do
         {
             yield return null;
-        } while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1f);
+        } while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.95f);
         anim.SetBool("attack", false);
         onHit = false;
         hitTimeFlag = false;

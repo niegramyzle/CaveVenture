@@ -21,8 +21,8 @@ public class RotationInputController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizonRotationVal = stats.RotationSpeed * Input.GetAxis(horizonInputName) * Time.deltaTime;
-        vertiRotationVal = stats.RotationSpeed * Input.GetAxis(vertiInputName) * Time.deltaTime;
-        playerRotation.rotatePlayer(horizonRotationVal, vertiRotationVal);
+        //horizonRotationVal = stats.RotationSpeed * Input.GetAxis(horizonInputName) * Time.deltaTime;
+        //vertiRotationVal = stats.RotationSpeed * Input.GetAxis(vertiInputName) * Time.deltaTime;
+        //playerRotation.rotatePlayer(horizonRotationVal, vertiRotationVal);
     }
 }

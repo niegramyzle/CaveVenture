@@ -53,6 +53,11 @@ public class HorizontalRotating : MonoBehaviour
         updateDependentMethod();
     }
 
+    private void Update()
+    {
+        updateDependentMethod();
+    }
+
     private void OnTriggerStay(Collider other)
     {
 

@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     public void respawnPlayer()
     {
         Time.timeScale = 1;
+        Cursor.visible = false;
         deadInfo.SetActive(false);
         PlayerManager.instance.Player.GetComponent<CharacterController>().enabled = false;
         PlayerManager.instance.Player.transform.position=currentCheckpoint.CurrentCheckpoint;
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour
         if (isPlayerDead())
         {
             deadInfo.SetActive(true);
+            Cursor.visible = true;
             Time.timeScale = 0;
         }
         EnemyManager.instance.OnUpdate();
@@ -57,9 +59,9 @@ public class GameManager : MonoBehaviour
         if(other.gameObject==PlayerManager.instance.Player)
         {
             EnemyManager.instance.Clear();
-
+            Cursor.visible = true;
             //SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
-          SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-1);
             Destroy(gameObject);
             //PlayerManager.instance = null;
             //EnemyManager.instance = null;

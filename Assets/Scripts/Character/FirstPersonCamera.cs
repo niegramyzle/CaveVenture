@@ -54,6 +54,14 @@ public class FirstPersonCamera : MonoBehaviour
         }
 
     }
+
+    public void onChangedParent(Quaternion rot)
+    {
+            originalFullPlayerRotation = rot;
+            rotationX = 0;
+    }
+
+
     void Start()
     {
         if (GetComponent<Rigidbody>())

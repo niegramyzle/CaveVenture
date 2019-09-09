@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMenu : MonoBehaviour
 {
@@ -39,6 +40,12 @@ public class GameMenu : MonoBehaviour
             Debug.Log(gameMenu.activeSelf);
             Cursor.visible = gameMenu.activeSelf ? true : false;
         }
+    }
+
+    public void OnEndGame()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
     private void Update()

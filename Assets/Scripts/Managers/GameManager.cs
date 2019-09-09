@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private CheckpointController currentCheckpoint;
     private CharacterStats playerStats;
     [SerializeField] private GameObject deadInfo;
+    [SerializeField] private GameObject endInfo;
 
     [SerializeField] private List<SpawnController> spawns;
 
@@ -58,10 +59,10 @@ public class GameManager : MonoBehaviour
     {
         if(other.gameObject==PlayerManager.instance.Player)
         {
-            EnemyManager.instance.Clear();
             Cursor.visible = true;
             //SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-1);
+            endInfo.SetActive(true);
+            Time.timeScale = 0;
             Destroy(gameObject);
             //PlayerManager.instance = null;
             //EnemyManager.instance = null;

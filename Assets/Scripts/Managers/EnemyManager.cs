@@ -8,21 +8,22 @@ public class EnemyManager : MonoBehaviour
     public static EnemyManager instance;
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
     }
     #endregion
 
     public List<EnemyController> enemies;
-
-    public void Clear()
-    {
-        enemies.Clear();
-    }
-
+    
     public void OnUpdate()
     {
-        //Debug.Log("EnemyManageroup");
-        //   Debug.Log("fffd");
         foreach (var enemy in enemies)
         {
             if (enemy.gameObject.activeSelf && !enemy.IsDied())

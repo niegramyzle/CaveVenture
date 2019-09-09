@@ -48,13 +48,19 @@ public class EnemyController : MonoBehaviour
         deathAnimFlag = true;
     }
 
-    private void Start()
+    private void Awake()
     {
         target = PlayerManager.instance.Player.transform;
         combatCont = GetComponent<CombatController>();
         stats = GetComponent<CharacterStats>();
         anim = GetComponent<Animator>();
-        charMov = GetComponent<CharacterMovement>(); 
+        charMov = GetComponent<CharacterMovement>();
+        //if (combatCont.enabled && anim.enabled && charMov.enabled && stats.enabled)
+        //    Debug.Log("XDDD");
+        //if (stats.IsDied)
+        //    Debug.Log("xd");
+        //else
+        //    Debug.Log("XDDDD");
     }
 
     public bool distanceToPlayer()
@@ -82,7 +88,6 @@ public class EnemyController : MonoBehaviour
             weapon.hit();
         }
     }
-
 
     private void OnDrawGizmosSelected()
     {

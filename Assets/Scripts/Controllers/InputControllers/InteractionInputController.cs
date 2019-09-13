@@ -35,4 +35,13 @@ public class InteractionInputController : MonoBehaviour
         return Input.GetKeyDown(KeyCode.Escape);
     }
 
+    public bool OnLeftEnd()
+    {
+        return Input.GetKeyUp(left);
+    }
+
+    public bool OnRightEnd()
+    {
+        return Input.GetKeyUp(right);
+    }
 }

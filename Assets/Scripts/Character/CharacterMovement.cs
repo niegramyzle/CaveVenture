@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CharacterMovement : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class CharacterMovement : MonoBehaviour
 
     public Vector3 Offset { get; set; }
     public bool OnPlatform { get; set; }
+
+    public UnityEvent onMovingStart;
+    public UnityEvent onMovingEnd;
 
     void Awake()
     {
@@ -39,6 +43,7 @@ public class CharacterMovement : MonoBehaviour
         }
         else if(sidewayInputVal !=0 || forwardInputVal!=0)
         {
+            onMovingStart.Invoke();
             moveDirection.x = sidewayInputVal;
             moveDirection.z = forwardInputVal;
             moveDirection = transform.TransformDirection(moveDirection);
@@ -49,6 +54,7 @@ public class CharacterMovement : MonoBehaviour
       
     private void slopeMovement(float sidewayInputVal, float forwardInputVal)
     {
+        onMovingStart.Invoke();
         moveDirection.x = sidewayInputVal;
         moveDirection.z = forwardInputVal;
         moveDirection.y = Physics.gravity.y* gravityMultiplier * slopeForce * Time.deltaTime;
@@ -107,6 +113,7 @@ public class CharacterMovement : MonoBehaviour
         {
             isJump = false;
         }
+        onMovingEnd.Invoke();
     }
 
 

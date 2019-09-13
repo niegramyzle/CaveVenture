@@ -4,33 +4,18 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] private List<SoundItem> sounds;
-    public static AudioManager instance;
+    public AudioSource backgroundMusic;
+    public List<AudioSource> sounds;
 
-    private void Awake()
+    public void SetBackgroundMusicVolume(float value) 
     {
-        //Debug.Log("AudiManagerAw");
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-        DontDestroyOnLoad(gameObject);
-        foreach (var sound in sounds)
-        {
-            sound.audioSource = gameObject.AddComponent<AudioSource>();
-            sound.audioSource.clip = sound.audioClipSound;
-            sound.audioSource.volume = sound.volume;
-            sound.audioSource.pitch = sound.pitch;
-        }
+        backgroundMusic.volume = value;
     }
 
-    public void PlaySound(string _audioClipName)
+    public void SetSFXVolume(float value) 
     {
-        sounds.Find(soundItem=> soundItem.audioClipName == _audioClipName).audioSource.Play();
+        foreach (AudioSource s in sounds) {
+            s.volume = value;
+        }
     }
 }
